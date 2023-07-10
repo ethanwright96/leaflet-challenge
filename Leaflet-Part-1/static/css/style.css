@@ -8,3 +8,15 @@ body {
   html {
     height: 100%;
   }
+
+  .legend {
+    background-color: aquamarine;
+
+    padding: 5px
+  }
+  .legend div {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+  }
