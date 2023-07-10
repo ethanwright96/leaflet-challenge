@@ -39,6 +39,7 @@ d3.json(queryUrl).then (function(data) {
         return color
     }
     
+    // Create a function to generate styling for cirlces
     function generateStyling(feature) {
         return {
             fillColor: assignColor(feature.geometry.coordinates[2]),
@@ -48,6 +49,7 @@ d3.json(queryUrl).then (function(data) {
         }
     }
 
+    // Create GeoJSON layer with the earthquake data 
     L.geoJson(data, {
         pointToLayer: function(feature, coord) {
             return L.circleMarker(coord)
@@ -71,15 +73,21 @@ d3.json(queryUrl).then (function(data) {
     legend.onAdd = function() {
         let div = L.DomUtil.create("div", "legend")
         // Write the inner HTML to the rectangular legend with the color and depth color scale
-        div.innerHTML = `<div style="background-color:${assignColor(90)}"></div> 90+
+        div.innerHTML = `<h4>Depth (km)</h4>
+        <hr>
+        <div style="background-color:${assignColor(90)}"></div> 90+
+        <hr>
         <div style="background-color:${assignColor(70)}"></div> 70-89
+        <hr>
         <div style="background-color:${assignColor(50)}"></div> 50-69
+        <hr>
         <div style="background-color:${assignColor(30)}"></div> 30-49
+        <hr>
         <div style="background-color:${assignColor(10)}"></div> 10-29
+        <hr>
         <div style="background-color:${assignColor(0)}"></div> <10`
         return div
     }
     // Add legend to Map
     legend.addTo(earthquakeMap)
 });
-
